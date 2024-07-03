@@ -38,7 +38,7 @@ public class Application {
 					// Uses string manipulation to obtain operator and value
 					index = expression.indexOf("(");
 					operator = expression.substring(0, index);
-					double value = Double.parseDouble(expression.substring(index, length - 1));
+					double value = Double.parseDouble(expression.substring(index + 1, length - 1));
 					// Displays expression
 					System.out.println(expression);
 					// Prints answers based on operator
