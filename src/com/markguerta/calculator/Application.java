@@ -99,7 +99,7 @@ public class Application {
 			Scanner scanner = new Scanner(System.in);
 			while(true) {
 				System.out.println("Enter an operation (add, sub, mul, div, factorial power, sqrt,"
-						+ "\nlog, log10, sin, cos, tan) or type exit to end:");
+						+ "log, log10, sin, cos, tan) or type exit to end:");
 				String operation = scanner.next();
 				operation = operation.toLowerCase();
 				if (operation.equals("exit")) {
@@ -139,37 +139,37 @@ public class Application {
 
 			    	case "power":
 			    		double[] zPow = Scn(2, scanner);
-			    		System.out.println("\nThe answer is " + power(zPow[0], zPow[1]));
+			    		System.out.println("The answer is " + power(zPow[0], zPow[1]));
 			    		break;
 
 			    	case "sqrt":
 			    		double[] zSqrt = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + sqrt(zSqrt[0]));
+			    		System.out.println("The answer is " + sqrt(zSqrt[0]));
 			    		break;
 
 			    	case "log":
 			    		double[] zLog = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + log(zLog[0]));
+			    		System.out.println("The answer is " + log(zLog[0]));
 			    		break;
 
 			    	case "log10":
 			    		double[] zLog10 = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + log10(zLog10[0]));
+			    		System.out.println("The answer is " + log10(zLog10[0]));
 			    		break;
 
 			    	case "sin":
 			    		double[] zSin = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + sin(Math.toRadians(zSin[0])));
+			    		System.out.println("The answer is " + sin(Math.toRadians(zSin[0])));
 			    		break;
 
 			    	case "cos":
 			    		double[] zCos = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + cos(Math.toRadians(zCos[0])));
+			    		System.out.println("The answer is " + cos(Math.toRadians(zCos[0])));
 			    		break;
 
 			    	case "tan":
 			    		double[] zTan = Scn(1, scanner);
-			    		System.out.println("\nThe answer is " + tan(Math.toRadians(zTan[0])));
+			    		System.out.println("The answer is " + tan(Math.toRadians(zTan[0])));
 			    		break;
 
 			    	default:
