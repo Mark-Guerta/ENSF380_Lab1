@@ -27,7 +27,7 @@ public class Application {
 					System.out.println("The answer is " + add(a, b));
 				else if (args[1].equals("-"))
 					System.out.println("The answer is " + sub(a, b));
-				else if (args[1].equals("*"))
+				else if (args[1].equals("x"))
 					System.out.println("The answer is " + mul(a, b));
 				else if (args[1].equals("/"))
 					// Throws exceptions when dividing by zero.
