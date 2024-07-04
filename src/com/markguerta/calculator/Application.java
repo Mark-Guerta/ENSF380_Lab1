@@ -16,28 +16,42 @@ public class Application {
 	// Calculator program
 	public static void main(String[] args) {
 		if (args.length > 0) {
-			// Operators with 1 variable
 			if (args.length == 1) {
 				// Converts args to string and uses string manipulation to obtain operator and value
 				String expression = args[0];
-				String operator;
+				expression = expression.toLowerCase();
 				int index;
 				int length = expression.length();
+				
 				// Calculates factorial from CLI
 				if (expression.indexOf("!") >= 0) {
 					// Displays expression
 					System.out.println(expression);
 					index = expression.indexOf("!");
-					operator = "!";
-					double value = Double.parseDouble(expression.substring(0, index));
 					// Prints answers
-					System.out.println("\nThe answer is " + factorial((int) value));
+					System.out.println("\nThe answer is " + factorial(Integer.parseInt(expression.substring(0, index))));
 				}
-				// Rest of the methods that use one variable
+				
+				else if(expression.contains("permutations")) {
+					System.out.println(expression);
+					index = expression.indexOf('(');
+					int comma = expression.indexOf(',');
+					int val1 = Integer.parseInt(expression.substring(index + 1, comma));
+					int val2 = Integer.parseInt(expression.substring(comma + 1, length - 1));
+		    		if (val1 < 0 || val2 < 0) 
+		    			System.out.println("Invalid values. Please use non-negative values.");
+		    	
+		    		else if (val1 > 100)
+		    			System.out.println("Invalid values. Please use a total less than 100 or greater than 0.");
+		    		
+		    		else
+		    			System.out.println("The answer is " + perm(val1, val2));
+				}
+				
 				else {
 					// Uses string manipulation to obtain operator and value
 					index = expression.indexOf("(");
-					operator = expression.substring(0, index);
+					String operator = expression.substring(0, index);
 					double value = Double.parseDouble(expression.substring(index + 1, length - 1));
 					// Displays expression
 					System.out.println(expression);
@@ -64,7 +78,26 @@ public class Application {
 					}
 				}
 			}
+
+		
+			else if (args.length == 2) {
+				String expression = args[0] + args[1];
+				expression = expression.toLowerCase();
+				System.out.println(expression);
+				int comma = expression.indexOf(',');
+				int val1 = Integer.parseInt(expression.substring(expression.indexOf('(') + 1, comma));
+				int val2 = Integer.parseInt(expression.substring(comma + 1, expression.length() - 1));
+	    		if (val1 < 0 || val2 < 0) 
+	    			System.out.println("Invalid values. Please use non-negative values.");
+	    		
+	    		else if (val1 < 0 || val1 > 100) 
+	    			System.out.println("Invalid total. Please use a total less than 100.");
+	    		
+	    		else
+	    			System.out.println("The answer is " + perm(val1, val2));
+			}
 			
+			// Two variable operations
 			else if (args.length == 3) {
 				// Displays expression
 				System.out.println(args[0] + args[1] + args[2]);
@@ -98,7 +131,7 @@ public class Application {
 			// Converts number strings to doubles
 			Scanner scanner = new Scanner(System.in);
 			while(true) {
-				System.out.println("Enter an operation (add, sub, mul, div, factorial power, sqrt,"
+				System.out.println("Enter an operation (add, sub, mul, div, factorial, permutations, power, sqrt,"
 						+ "log, log10, sin, cos, tan) or type exit to end:");
 				String operation = scanner.next();
 				operation = operation.toLowerCase();
@@ -131,15 +164,27 @@ public class Application {
 			    		else
 			            System.out.println("\nThe answer is " + div(zDiv[0], zDiv[1]));
 			    		break;
+			    		
+			    	case "permutations":
+			    		double[] zPerm = Scn(2, scanner);
+			    		if (zPerm[0] < 0 || zPerm[1] < 0) {
+			    			System.out.println("Invalid values. Please use non-negative values.");
+			    			break;
+			    		}
+			    		else if (zPerm[0] > 100) {
+			    			System.out.println("Invalid values. Please use a total less than 100 or greater than 0.");
+			    			break;
+			    		}
+			    		System.out.println("The answer is " + perm((int) zPerm[0], (int) zPerm[1]));
+			    		
+			    	case "power":
+			    		double[] zPow = Scn(2, scanner);
+			    		System.out.println("The answer is " + power(zPow[0], zPow[1]));
+			    		break;
 
 			    	case "factorial":
 			    		double[] zFact = Scn(1, scanner);
 			    		System.out.println("The answer is " + factorial((int) zFact[0]));
-			    		break;
-
-			    	case "power":
-			    		double[] zPow = Scn(2, scanner);
-			    		System.out.println("The answer is " + power(zPow[0], zPow[1]));
 			    		break;
 
 			    	case "sqrt":
@@ -179,8 +224,8 @@ public class Application {
 			}
 			scanner.close();
 		}
-		
 	}
+	
 	// Addition
 	public static double add(double a, double b) {
 		return a + b;
@@ -263,6 +308,31 @@ public class Application {
 	// Sine function
 	public static double tan(double angleRadians) {
 		return Math.tan(angleRadians);
+	}
+	
+	//Permutation method
+	public static int perm(int n, int r) {
+		if (r == 0)
+			return 1;
+		else if (n < r)
+			return 0;
+		else if (r == 1)
+			return n;
+		return n * perm(n - 1, r - 1);
+	}
+	
+	// Permutation method V2
+	public static int perm2(int n, int r) {
+		if (r == 0)
+			return 1;
+		else if (n < r)
+			return 0;
+		else if (r == 1)
+			return n;
+		int perm = n;
+		for (int i = 1; i < r; i++)
+			perm *= (n - i);
+		return perm;
 	}
 	
 	// Scanner method for 1 or 2 variables
