@@ -2,7 +2,7 @@
 * <h1 > Application.java </h1 >
 * <p>
 * This class is designed for processing calculator functions in Java.
-* It is part of Lab 1 Exercise E.
+* It is part of Lab 1 Exercise C.
 * </p>
 *
 * <p><b> Submission Date :</b> June 5, 2024 </p>
