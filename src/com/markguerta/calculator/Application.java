@@ -2,10 +2,10 @@
 * <h1 > Application.java </h1 >
 * <p>
 * This class is designed for processing calculator functions in Java.
-* It is part of Lab 1 Exercise C.
+* It is part of Lab 1 Exercise E.
 * </p>
 *
-* <p><b> Submission Date :</b> June 2, 2024 </p>
+* <p><b> Submission Date :</b> June 5, 2024 </p>
 *
 * @author Mark Guerta
 * @version 1.0
@@ -327,8 +327,6 @@ public class Application {
 			return 1;
 		else if (n < r)
 			return 0;
-		else if (r == 1)
-			return n;
 		int perm = n;
 		for (int i = 1; i < r; i++)
 			perm *= (n - i);
